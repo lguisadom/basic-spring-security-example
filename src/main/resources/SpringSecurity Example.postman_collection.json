@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "0f9fb5aa-b9fc-4346-8f34-2e8b2fdb82f9",
+		"name": "SpringSecurity Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6041738"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/demo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"demo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
