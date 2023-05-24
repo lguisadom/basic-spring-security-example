@@ -17,6 +17,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority",
@@ -24,9 +25,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
 
-    public User(String username, String password, List<Authority> authorities) {
+    public User(String username, String password, boolean enabled, List<Authority> authorities) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
+        this.enabled = enabled;
     }
 }

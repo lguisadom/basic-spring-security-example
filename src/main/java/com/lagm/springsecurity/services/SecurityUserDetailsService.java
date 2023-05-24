@@ -1,6 +1,6 @@
 package com.lagm.springsecurity.services;
 
-import com.lagm.springsecurity.repositories.UserRepository;
+import com.lagm.springsecurity.repositories.IUserRepository;
 import com.lagm.springsecurity.security.SecurityUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SecurityUserDetailsService implements UserDetailsService {
-    private final UserRepository userRepository;
+    private final IUserRepository userRepository;
 
-    public SecurityUserDetailsService(UserRepository userRepository) {
+    public SecurityUserDetailsService(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
