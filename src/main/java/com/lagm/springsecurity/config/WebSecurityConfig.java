@@ -3,18 +3,14 @@ package com.lagm.springsecurity.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableMethodSecurity(prePostEnabled = true) // PreAuthorize, PostAuthorize, PreFilter, PostFilter
 public class WebSecurityConfig {
 //     @Bean
 //     public UserDetailsService userDetailsService() {
@@ -53,17 +49,17 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                 // .anyRequest().permitAll()
                 // .anyRequest().denyAll()
-                // .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 // .anyRequest().hasRole("ADMIN")
                 // .anyRequest().hasAuthority("WRITE")
                 // .anyRequest().access(new WebExpressionAuthorizationManager("hasRole('ADMIN') or hasRole('DBA')"))
 
-                .requestMatchers("/demo").permitAll()
-                .requestMatchers("/admin").hasRole("ADMIN")
-                .requestMatchers("/dba").hasAnyRole("DBA", "ADMIN")
+                //.requestMatchers("/demo").permitAll()
+                //.requestMatchers("/admin").hasRole("ADMIN")
+                //.requestMatchers("/dba").hasAnyRole("DBA", "ADMIN")
 
-                .requestMatchers(HttpMethod.POST, "/add").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/add").authenticated()
+                //.requestMatchers(HttpMethod.POST, "/add").hasRole("ADMIN")
+                //.requestMatchers(HttpMethod.GET, "/add").authenticated()
 
                 // .and().build();
                 .and().csrf().disable().build(); // deshabilita csrf para poder hacer petición por postman
