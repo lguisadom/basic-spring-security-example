@@ -31,6 +31,20 @@ public class WebSecurityConfig {
 //        return NoOpPasswordEncoder.getInstance(); // No apto para producción
 //    }
 
+    // Endpoint level authorization
+
+    // --- Matcher
+    // 1. AnyRequest
+    // 2. RequestMatchers
+    // 3. RequestMatchers with HttpMethod
+
+    // --- Authorization rules
+    // 1. PermitAll
+    // 2. DenyAll
+    // 3. Authenticated
+    // 4. HasRole
+    // 5. HasAuthority
+    // 6. Acccess (SpEL) - Sprint Expression Language para filtros más complejos
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http
